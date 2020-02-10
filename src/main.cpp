@@ -2,6 +2,7 @@
 #include <WiFi.h>
 #include <PubSubClient.h>
 #include <U8x8lib.h>
+#include <PrivateData.h>
 
 #define BUTTON_PIN_NEXT 5
 #define BUTTON_PIN_SELECT 18
@@ -61,8 +62,8 @@
 U8X8_SSD1327_MIDAS_128X128_HW_I2C myDisplay(/* reset=*/ U8X8_PIN_NONE);
 
 // SSID/Password for WLAN
-const char* ssid = "HomeNetwork";
-const char* password = "8erbahn;";
+const char* ssid = SSID;
+const char* password = PASSWORD;
 
 // MQTT Broker IP address
 const char* mqtt_server = "192.168.188.47";
@@ -82,7 +83,7 @@ long lastUsage = 0;
 
 void setup_wifi() {
   delay(10);
-  // We start by connecting to a WiFi network
+  // Connecting to a WiFi network
   Serial.println();
   Serial.print("Connecting to ");
   Serial.println(ssid);
